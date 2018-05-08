@@ -1,0 +1,42 @@
+package classes;
+import function.Abilities;
+
+public class Kronos implements Abilities{
+	public double hp;
+	public double def;
+	public double atk;
+	public String name;
+	public String type = "Kronos";
+	public boolean warp = false;
+
+	public Kronos(String n) {
+		name = n;
+	}
+
+	@Override
+	public void mainAbility() {
+		System.out.println("Time Dilation Zone Activated");
+	}
+
+	@Override
+	public void secondaryAbility() {
+		System.out.println("Time Restriction Zone Activated");
+		
+	}
+
+	@Override
+	public void specialAbility() {
+		if(warp == false) {
+			System.out.println("Time Reversed 10 Seonds");
+			warp = true;
+		}else {
+			System.out.println("Ability Already Used");
+		}
+		
+	}
+
+	@Override
+	public void activate() {
+		System.out.println("Not Applicable");
+	}
+}
