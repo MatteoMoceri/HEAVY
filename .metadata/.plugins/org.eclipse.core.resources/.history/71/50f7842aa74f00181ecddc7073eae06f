@@ -1,0 +1,36 @@
+package classes;
+
+import network.Abilities;
+
+public class Mage implements Abilities {
+	public double hp;
+	public double def;
+	public double atk;
+	public String name;
+	public String type = "Mage";
+
+	public Mage(String n) {
+		name = n;
+	}
+
+	@Override
+	public void mainAbility() {
+		System.out.println("Healing Activated");
+	}
+
+	@Override
+	public void secondaryAbility() {
+		System.out.println("Force Shield Activated");
+	}
+
+	@Override
+	public void specialAbility() {
+		System.out.println("Teleportation Beacon Placed");
+	}
+
+	@Override
+	public void activate() {
+		// TODO Auto-generated method stub
+		
+	}
+}

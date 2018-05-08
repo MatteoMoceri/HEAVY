@@ -1,0 +1,22 @@
+import javax.swing.JButton;
+import javax.swing.JFrame;
+
+public class note_input {
+	
+	static JFrame giveNotes;
+	static JButton print;
+	
+	public void setupGUI() {
+		giveNotes = new JFrame();
+		print = new JButton();
+		
+		giveNotes.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		giveNotes.setVisible(true);
+		giveNotes.setSize(400,400);
+	}
+	
+	public static void main(String args[]) {
+		note_input gui = new note_input();
+		gui.setupGUI();
+	}
+}

@@ -1,0 +1,28 @@
+package network;
+
+import classes.Mage;
+
+public class player {
+	public String player1Name;
+	public String characterClass1;
+	public Object character1;
+	
+	public player(String pn1, String cc1) {
+		player1Name = pn1;
+		characterClass1 = cc1.toLowerCase();
+	}
+	
+	public void setClass() {
+		switch(characterClass1) {
+		case "mage":
+			Mage mage = new Mage(player1Name);
+			character1 = mage;
+			break;	
+		case "photon":
+		case "kronos":
+		case "phaser":
+		case "graviteer":
+		case "mystic":
+		}
+	}
+}

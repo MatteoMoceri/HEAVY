@@ -1,0 +1,41 @@
+import java.util.*;
+public class final_position{
+	static Scanner physScanner = new Scanner(System.in);
+	
+	public final_position(double vF){
+		finalV = vF;
+	}
+	
+	public static void getAccel(double a){
+		accel = a;
+	}
+	
+	public static void  getVInitial(double vI) {
+		initialV = vI;
+	} 
+	
+	public static void getti(double t) {
+		ti = t;
+	}
+
+	public static void calcfinalV() {
+		finalV = ((accel*ti) + initialV);
+		}
+	
+	public static double finalV;
+	public static double accel;
+	public static double ti;
+	public static double initialV;
+	
+	public static void main(String args[]) {
+		System.out.println("Enter Acceleration: \n");
+		final_position.getAccel(physScanner.nextDouble());
+		System.out.println("Enter Initial finalV: \n");
+		final_position.getVInitial(physScanner.nextDouble());
+		System.out.println("Enter ti: \n");
+		final_position.getti(physScanner.nextDouble());
+		System.out.println("Final finalV: \n");
+		final_position.calcfinalV();
+		System.out.println(finalV);
+	}
+}

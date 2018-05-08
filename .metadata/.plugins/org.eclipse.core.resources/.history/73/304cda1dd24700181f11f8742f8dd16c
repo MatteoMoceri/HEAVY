@@ -1,0 +1,340 @@
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.image.ImageObserver;
+
+import javax.swing.BoxLayout;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JList;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.ListSelectionModel;
+import javax.swing.ScrollPaneConstants;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
+
+public class arena implements ActionListener, ListSelectionListener, ImageObserver {
+	public static double hp1 = 100;
+	public static double hp2 = 100;
+	public static double attacklevel1 = 10;
+	public static double attacklevel2 = 10;
+	public static double defenselevel1 = 0;
+	public static double defenselevel2 = 0;
+	public static String p1Move;
+	public static String p2Move;
+	static JFrame Arena;
+	static JPanel player1;
+	static JPanel player2;
+	static JPanel fightRing;
+	static JPanel statBar;
+	static JPanel player1label;
+	static JPanel player2label;
+	static JPanel player1Stats;
+	static JPanel player2Stats;
+	static JLabel player1HP;
+	static JLabel player2HP;
+	static JLabel player1AttackStatus;
+	static JLabel player2AttackStatus;
+	static JLabel player1MoveSelected;
+	static JLabel player2MoveSelected;
+	static JLabel player1AttackStat;
+	static JLabel player1DefenseStat;
+	static JLabel player2AttackStat;
+	static JLabel player2DefenseStat;
+	static JLabel gameStatus;
+	static JButton p1Attack;
+	static JButton p2Attack;
+	static JButton reset;
+	@SuppressWarnings("rawtypes")
+	static JList moveList1;
+	static JScrollPane moveScroller1;
+	@SuppressWarnings("rawtypes")
+	static JList moveList2;
+	static JScrollPane moveScroller2;
+
+	String[] moveSet = { "Attack", "Defense Boost", "Attack Boost" };
+
+	public void setWindow() {
+		Arena = new JFrame();
+		Arena.setVisible(true);
+		Arena.setSize(1500, 400);
+		Arena.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	}
+
+	public void setButtons() {
+		p1Attack = new JButton("Attack");
+		p2Attack = new JButton("Attack");
+		reset = new JButton("Play Again");
+		reset.setEnabled(false);
+	}
+
+	@SuppressWarnings({ "unchecked", "rawtypes" })
+	public void setList() {
+		moveList1 = new JList(moveSet);
+		moveScroller1 = new JScrollPane(moveList1);
+		moveList2 = new JList(moveSet);
+		moveScroller2 = new JScrollPane(moveList2);
+
+		moveScroller1.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+		moveScroller2.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+		moveScroller2.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+		moveScroller2.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+
+		moveList1.setVisibleRowCount(3);
+		moveList2.setVisibleRowCount(3);
+
+		moveList1.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		moveList2.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+
+		moveList1.addListSelectionListener(this);
+		moveList2.addListSelectionListener(this);
+	}
+
+	public void setPlayerPanels() {
+		player1 = new JPanel();
+		player2 = new JPanel();
+		fightRing = new JPanel();
+		player1label = new JPanel();
+		player2label = new JPanel();
+		statBar = new JPanel();
+		player1Stats = new JPanel();
+		player2Stats = new JPanel();
+
+		player1.setLayout(new BoxLayout(player1, BoxLayout.Y_AXIS));
+
+		Font gameFont = new Font("monospaced", Font.BOLD, 28);
+
+		player1HP = new JLabel("  " + "Player 1 HP: " + hp1 + "  ");
+		player2HP = new JLabel("  " + "Player 2 HP: " + hp2 + "  ");
+		player1AttackStatus = new JLabel("Player 1 Ready");
+		player2AttackStatus = new JLabel("Player 2 Ready");
+		gameStatus = new JLabel("Player 1 Attacking...");
+		player1AttackStat = new JLabel(" Attack: " + attacklevel1 + " ");
+		player2AttackStat = new JLabel(" Attack: " + attacklevel2 + " ");
+		player1DefenseStat = new JLabel(" Defense: " + defenselevel1 + " ");
+		player2DefenseStat = new JLabel(" Defense: " + defenselevel2 + " ");
+		gameStatus.setFont(gameFont);
+		player1.add(BorderLayout.WEST, player1HP);
+		player1.add(BorderLayout.EAST, p1Attack);
+		player1.add(player1Stats);
+		player1.add(BorderLayout.CENTER, moveScroller1);
+
+		player1Stats.setLayout(new BoxLayout(player1Stats, BoxLayout.Y_AXIS));
+		player1Stats.add(player1AttackStat);
+		player1Stats.add(player1DefenseStat);
+
+		player2Stats.setLayout(new BoxLayout(player2Stats, BoxLayout.Y_AXIS));
+		player2Stats.add(player2AttackStat);
+		player2Stats.add(player2DefenseStat);
+
+		player2.setLayout(new BoxLayout(player2, BoxLayout.Y_AXIS));
+
+		player2.add(BorderLayout.EAST, player2HP);
+		player2.add(BorderLayout.WEST, p2Attack);
+		player2.add(player2Stats);
+		player2.add(BorderLayout.CENTER, moveScroller2);
+		player1label.add(player1AttackStatus);
+		player2label.add(player2AttackStatus);
+		statBar.add(BorderLayout.WEST, player1label);
+		statBar.add(BorderLayout.EAST, player2label);
+		statBar.setLayout(new BoxLayout(statBar, BoxLayout.X_AXIS));
+		fightRing.add(gameStatus);
+		fightRing.add(reset);
+
+		player1label.setBackground(Color.RED);
+		player2label.setBackground(Color.CYAN);
+		player1.setBackground(Color.RED);
+		player2.setBackground(Color.CYAN);
+	}
+
+	public void moveStatus() {
+		player1MoveSelected = new JLabel();
+		player2MoveSelected = new JLabel();
+		player1.add(BorderLayout.SOUTH, player1MoveSelected);
+		player2.add(BorderLayout.SOUTH, player2MoveSelected);
+	}
+
+	public void initialize() {
+		p2Attack.setEnabled(false);
+	}
+
+	public void addListeners() {
+		p1Attack.addActionListener(this);
+		p2Attack.addActionListener(this);
+		reset.addActionListener(this);
+	}
+
+	public static void main(String args[]) {
+		arena arena1 = new arena();
+		arena1.setWindow();
+		arena1.setButtons();
+		arena1.setList();
+		arena1.setPlayerPanels();
+		arena1.addListeners();
+		arena1.initialize();
+		arena1.moveStatus();
+		Arena.getContentPane().add(player1, BorderLayout.WEST);
+		Arena.getContentPane().add(player2, BorderLayout.EAST);
+		Arena.getContentPane().add(fightRing, BorderLayout.CENTER);
+		Arena.getContentPane().add(statBar, BorderLayout.NORTH);
+
+	}
+
+	@Override
+	public void valueChanged(ListSelectionEvent arg0) {
+		if (arg0.getSource() == moveList1) {
+			if (!arg0.getValueIsAdjusting()) {
+				String selectedMove1 = (String) moveList1.getSelectedValue();
+				p1Move = selectedMove1;
+			}
+		} else {
+			if (!arg0.getValueIsAdjusting()) {
+				String selectedMove2 = (String) moveList2.getSelectedValue();
+				p2Move = selectedMove2;
+			}
+		}
+
+		if (moveList1.isSelectionEmpty() == false) {
+			player1MoveSelected.setText(p1Move);
+		}
+		if (moveList2.isSelectionEmpty() == false) {
+			player2MoveSelected.setText(p2Move);
+		}
+
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent arg0) {
+		// PLAYER ONE TURN
+		p1Attack.setEnabled(false);
+		if (arg0.getSource() == p1Attack) {
+			if (moveList1.isSelectionEmpty() == true) {
+				p1Attack.setEnabled(true);
+				p2Attack.setEnabled(false);
+				player1MoveSelected.setText("Please Select a Move");
+			}
+			if (moveList1.getSelectedValue() == "Attack") {
+				int rand1 = (int) (10 * (Math.random()));
+				player2AttackStatus.setText("Player 2 Ready");
+				if (rand1 == 1) {
+					player1AttackStatus.setText("Attack Missed!");
+				} else {
+					hp2 = hp2 - (attacklevel1 - defenselevel2);
+					player2HP.setText("    " + "Player 2 HP: " + hp2);
+				}
+				gameStatus.setText("Player 2 Attacking...");
+
+				if (p2Attack.isEnabled() == false) {
+					p2Attack.setEnabled(true);
+				}
+			} else if (moveList1.getSelectedValue() == "Defense Boost") {
+				p1Attack.setEnabled(false);
+
+				defenselevel1 = defenselevel1 + 5;
+
+				player1DefenseStat.setText(" Defense: " + defenselevel1 + " ");
+
+				if (p2Attack.isEnabled() == false) {
+					p2Attack.setEnabled(true);
+				}
+			} else if (moveList1.getSelectedValue() == "Attack Boost") {
+				p1Attack.setEnabled(false);
+
+				attacklevel1 = attacklevel1 + 10;
+
+				player1AttackStat.setText(" Attack: " + attacklevel1 + " ");
+
+				if (p2Attack.isEnabled() == false) {
+					p2Attack.setEnabled(true);
+				}
+			}
+			// PLAYER TWO TURN
+		} else {
+			p2Attack.setEnabled(false);
+			if (moveList2.isSelectionEmpty() == true) {
+				p2Attack.setEnabled(true);
+				p1Attack.setEnabled(false);
+				player2MoveSelected.setText("Please Select a Move");
+			}
+			if (moveList2.getSelectedValue() == "Attack") {
+				int rand1 = (int) (10 * (Math.random()));
+				player1AttackStatus.setText("Player 1 Ready");
+				if (rand1 == 1) {
+					player2AttackStatus.setText("Attack Missed!");
+				} else {
+					hp1 = hp1 - (attacklevel2 - defenselevel1);
+					player1HP.setText("    " + "Player 1 HP: " + hp1);
+				}
+				gameStatus.setText("Player 1 Attacking...");
+				if (p1Attack.isEnabled() == false) {
+					p1Attack.setEnabled(true);
+				}
+			} else if (moveList2.getSelectedValue() == "Defense Boost") {
+				p2Attack.setEnabled(false);
+
+				defenselevel2 = defenselevel2 + 5;
+
+				player2DefenseStat.setText(" Defense: " + defenselevel2 + " ");
+
+				if (p1Attack.isEnabled() == false) {
+					p1Attack.setEnabled(true);
+				}
+			} else if (moveList2.getSelectedValue() == "Attack Boost") {
+				p2Attack.setEnabled(false);
+
+				attacklevel2 = attacklevel2 + 10;
+
+				player2AttackStat.setText(" Attack: " + attacklevel2 + " ");
+
+				if (p1Attack.isEnabled() == false) {
+					p1Attack.setEnabled(true);
+				}
+			}
+			
+			if(hp1 <= 0.0) {
+				p2Attack.setEnabled(false);
+				p2Attack.setEnabled(false);
+				reset.setEnabled(true);
+				gameStatus.setText("Player 2 Wins!");
+			}else if(hp2 <= 0.0) {
+				p1Attack.setEnabled(false);
+				p1Attack.setEnabled(false);
+				reset.setEnabled(true);
+				gameStatus.setText("Player 1 Wins!");
+			}
+			
+			if (arg0.getSource() == reset) {
+				reset();
+			}
+		}
+	}
+	
+	public void reset() {
+		hp1 = 100;
+		hp2 = 100;
+		attacklevel1 = 0;
+		attacklevel2 = 0;
+		defenselevel1 = 0;
+		defenselevel2 = 0;
+
+		p2Attack.setEnabled(false);
+		p2Attack.setEnabled(true);
+		reset.setEnabled(false);
+		
+	}
+	
+		
+	
+
+	@Override
+	public boolean imageUpdate(Image arg0, int arg1, int arg2, int arg3, int arg4, int arg5) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+}

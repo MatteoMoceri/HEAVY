@@ -1,0 +1,34 @@
+import java.awt.Color;
+
+import javax.swing.BoxLayout;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+
+public class note_input {
+	
+	static JFrame giveNotes;
+	static JButton print;
+	static JPanel panel1;
+	
+	public void setupGUI() {
+		giveNotes = new JFrame();
+		print = new JButton();
+		
+		giveNotes.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		giveNotes.setVisible(true);
+		giveNotes.setSize(400,400);
+	}
+	
+	public void addPanel() {
+		panel1 = new JPanel();
+		panel1.setLayout(new BoxLayout(panel1, BoxLayout.X_AXIS));
+		panel1.setBackground(Color.BLACK);
+		panel1.add(print);
+	}
+	
+	public static void main(String args[]) {
+		note_input gui = new note_input();
+		gui.setupGUI();
+	}
+}

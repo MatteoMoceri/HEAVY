@@ -1,0 +1,14 @@
+package function;
+
+public class Chunk {
+	
+	public double density;
+	public double length;
+	public double width;
+	public double height;
+	public double vol;
+	
+	public Chunk(double d, double l, double w, double h){
+		
+	}
+}

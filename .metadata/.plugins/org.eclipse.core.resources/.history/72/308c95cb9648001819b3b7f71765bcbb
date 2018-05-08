@@ -1,0 +1,13 @@
+package classes;
+import network.combat;
+
+public class Kronos implements combat{
+	public double hp;
+	public double def;
+	public double atk;
+	public String name;
+
+	public Kronos(String n) {
+		name = n;
+	}
+}

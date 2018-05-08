@@ -1,0 +1,6 @@
+package classes;
+import network.combat;
+
+public class Photon implements combat{
+
+}

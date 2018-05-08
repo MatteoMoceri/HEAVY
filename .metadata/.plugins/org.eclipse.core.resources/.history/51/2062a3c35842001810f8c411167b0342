@@ -1,0 +1,40 @@
+import java.awt.BorderLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+
+public class ElevensGUI implements ActionListener {
+	static JButton clicker;
+	static JFrame window;
+	
+	public void start() {
+		window = new JFrame();
+		clicker = new JButton("Hello");
+	}
+	
+	public void addListener() {
+		clicker.addActionListener(this);
+	}
+	
+	public static void main(String[] args) {
+		simpleGUI gui = new simpleGUI();
+		
+		gui.start();
+		gui.addListener();
+		
+		window.getContentPane().add(BorderLayout.NORTH, clicker);
+		window.setSize(400,400);
+		window.setVisible(true);
+		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		clicker.setText("Good bye!");
+	}
+
+}
+

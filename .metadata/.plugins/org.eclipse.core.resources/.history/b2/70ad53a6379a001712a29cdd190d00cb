@@ -1,0 +1,17 @@
+
+public class client_test{
+	
+	public static String t  = ".txt input";
+	
+	public client_test(){
+		
+	}
+	
+	public static void augText(String m) {
+		System.out.println(m);
+	}
+	public static void main(String args[]){
+		client_test.augText(t);
+	}
+
+}

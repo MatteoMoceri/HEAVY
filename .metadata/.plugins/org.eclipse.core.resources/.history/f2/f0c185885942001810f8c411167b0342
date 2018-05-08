@@ -1,0 +1,38 @@
+import java.awt.BorderLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+
+public class ElevensGUI implements ActionListener {
+	static JButton replace;
+	static JFrame board;
+	
+	public void start() {
+		board = new JFrame();
+		replace = new JButton("Replace");
+	}
+	
+	public void addListener() {
+		replace.addActionListener(this);
+	}
+	
+	public void startGui(ElevensGUI g) {
+		g.start();
+		g.addListener();
+		
+		board.getContentPane().add(BorderLayout.NORTH, replace);
+		board.setSize(1000,400);
+		board.setVisible(true);
+		board.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		replace.setText("Good bye!");
+	}
+
+}
+

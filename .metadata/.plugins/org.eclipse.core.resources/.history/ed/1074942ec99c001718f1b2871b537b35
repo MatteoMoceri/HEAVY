@@ -1,0 +1,42 @@
+import java.awt.BorderLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+
+public class multiButton implements ActionListener {
+	
+	static JFrame window;
+	static JButton clicker1;
+	static JButton clicker2;
+	
+	public void initialize() {
+		clicker1.addActionListener(this);
+		clicker2.addActionListener(this);
+	}
+	
+	public static void start() {
+		multiButton b = new multiButton();
+		b.initialize();
+		
+		window = new JFrame();
+		clicker1 = new JButton("Hello");
+		clicker2 = new JButton("Hi");
+		
+		window.setVisible(true);
+		window.setSize(400, 400);
+		window.getContentPane().add(BorderLayout.EAST, clicker1);
+		window.getContentPane().add(BorderLayout.WEST, clicker2);
+	}
+	
+	public static void main(String args[]) {
+		multiButton.start();
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		clicker1.setText("Oh no!");
+		
+	}
+}

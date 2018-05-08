@@ -1,0 +1,46 @@
+package classes;
+
+import function.Abilities;
+
+public class Mystic implements Abilities {
+	public double hp;
+	public double def;
+	public double atk;
+	public String name;
+	public String type = "Mystic";
+	public boolean flight = false;
+
+	public Mystic(String n) {
+		name = n;
+	}
+
+	@Override
+	public void mainAbility() {
+		System.out.println("Telekinesis Active");
+
+	}
+
+	@Override
+	public void secondaryAbility() {
+		if (flight == false) {
+			System.out.println("Force Pulse Complete");
+			flight = true;
+		}else if(flight == true) {
+			System.out.println("Flight Ended");
+			flight = false;
+		}
+
+	}
+
+	@Override
+	public void specialAbility() {
+		System.out.println("Flight Activated");
+
+	}
+
+	@Override
+	public void activate() {
+		System.out.println("Not Applicable");
+
+	}
+}

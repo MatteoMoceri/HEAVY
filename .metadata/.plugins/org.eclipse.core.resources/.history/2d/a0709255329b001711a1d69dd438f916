@@ -1,0 +1,76 @@
+import java.util.*;
+import java.io.*;
+
+
+public class note_converter {
+	
+	public static String Note;
+	public static String newNote;
+	
+	public note_converter() {
+		
+	}
+	
+	public static void convert() {
+		Scanner noteReader = new Scanner(System.in);
+		System.out.print("Input Note 1:");
+		String note1 = noteReader.next();
+		Note = note1;
+		
+		if(Note == "A") {
+			newNote = "D#";
+		}
+	/*	
+		if(Note == "B") {
+			System.out.println("F");
+		} 
+		
+		if(Note == "C") {
+			System.out.println("F#");
+		} 
+		
+		if(Note == "D") {
+			System.out.println("G#");
+		} 
+			
+		if(Note == "E") {
+			System.out.println("A#");
+		} 
+			
+		if(Note == "F") {
+			System.out.println("B");
+		} 
+			
+		if(Note == "G") {
+			System.out.println("C#");
+		} 
+			
+		if(Note == "A#") {
+			System.out.println("E");
+		} 
+			
+		if(Note == "C#") {
+			System.out.println("G");
+		} 
+			
+		if(Note == "D#") {
+			System.out.println("A");
+		} 
+			
+		if(Note == "F#") {
+			System.out.println("C");
+		}
+			
+		if(Note == "G#") {
+			System.out.println("D");
+		}
+		*/
+	}
+	
+	public static void main(String[] args) {
+		note_converter.convert();
+		//System.out.print("New Note: ");
+		System.out.println(newNote);
+	}
+
+}

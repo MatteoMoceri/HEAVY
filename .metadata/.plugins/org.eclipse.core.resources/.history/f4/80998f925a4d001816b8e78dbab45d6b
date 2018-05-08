@@ -1,0 +1,84 @@
+package classes;
+import java.util.Scanner;
+
+import network.Abilities;
+
+public class Graviteer implements Abilities{
+	double hp;
+	public double def;
+	public double atk;
+	public String name;
+	public String type = "Graviteer";
+	public String grenadeID = "w";
+	public String grenadeType = "GravWell";
+
+	Scanner gravScanner = new Scanner(System.in);
+	
+	public Graviteer(String n) {
+		name = n;
+	}
+
+	@Override
+	public void mainAbility() {
+		
+		switch(grenadeID){
+		case "w":
+			System.out.println("GravWell Grenade Thrown");
+			break;
+		case "r":
+			attach();
+			break;
+		case "c":
+			attach();
+			break;
+		default: 
+			System.out.println("Error");
+			break;
+		}
+	}
+
+	@Override
+	public void secondaryAbility() {
+		System.out.println("Gravity Jump Complete");
+	}
+
+	@Override
+	public void specialAbility() {
+		System.out.println("Which type of grenade would you like to equip?");
+		String t = gravScanner.next();
+		switch(t) {
+		case "w":
+			grenadeID = "w";
+			grenadeType = "GravWell";
+			break;
+		case "r":
+			grenadeID = "r";
+			grenadeType = "GravWire";
+			break;
+		case "c":
+			grenadeID = "c";
+			grenadeType = "GravCharge";
+			break;
+		}
+		System.out.println(grenadeType + " Equipped");
+	}
+	
+	public void attach() {
+		String place1;
+		String place2;
+		
+		System.out.println("Press \"p\" to place first attachment point");
+		place1 = gravScanner.next();
+		System.out.println(place1);
+		if(place1 == "p") {
+			System.out.println("Complete");
+//			System.out.println("Press \"p\" to place second attachment point");
+//			place2 = gravScanner.next();
+		}
+//			if(place2 == "p") {
+//				System.out.println(grenadeType + " Complete");
+//				
+//			}
+//		}
+	}
+}

@@ -1,0 +1,35 @@
+package classes;
+import java.util.Scanner;
+
+import network.combat;
+
+public class Graviteer implements combat{
+	double hp;
+	public double def;
+	public double atk;
+	public String name;
+
+	Scanner gravScanner = new Scanner(System.in);
+	
+	public String grenadeType;
+	
+	public Graviteer(String n) {
+		name = n;
+	}
+
+	@Override
+	public void mainAbility() {
+		System.out.println("GravGrenade Thrown");
+	}
+
+	@Override
+	public void secondaryAbility() {
+		System.out.println("Gravity Jump Complete");
+	}
+
+	@Override
+	public void specialAbility() {
+		System.out.println("Which type of grenade would you like to equip?");
+		grenadeType = gravScanner.next();
+	}
+}

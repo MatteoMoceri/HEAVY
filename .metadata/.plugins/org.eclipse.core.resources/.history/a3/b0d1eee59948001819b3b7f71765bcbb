@@ -1,0 +1,11 @@
+package network;
+
+public class main {
+	
+	int numPlayers;
+	
+	public static void main(String[] args) {
+		
+	}
+
+}

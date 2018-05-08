@@ -1,0 +1,21 @@
+package function;
+
+public class Chunk extends Sim{
+	
+	public double densityPercent;
+	public double length;
+	public double width;
+	public double height;
+	public double vol;
+	public String state;
+	
+	public Chunk(double d, double l, double w, double h, String s){
+		densityPercent = d;
+		length = l;
+		width = w;
+		height = h;
+		state = s;
+		
+		vol = (l*w*h);
+	}
+}

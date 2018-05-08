@@ -1,0 +1,16 @@
+import java.awt.Color;
+import java.awt.Graphics;;
+
+public class colorChange extends Pallet {
+
+	public void paintComponent(Graphics g) {
+		g.setColor(Color.orange);
+		
+		g.fillRect(30, 60, 200, 200);
+	}
+	
+	public static void main(String[] args) {
+		
+	}
+
+}

@@ -1,0 +1,41 @@
+import java.util.*;
+public class time{
+	static Scanner physScanner = new Scanner(System.in);
+	
+	public time(double vI){
+		initial = vI;
+	}
+	
+	public static void getAccel(double a){
+		accel = a;
+	}
+	
+	public static void  getVFinal(double vF) {
+		velocity = vF;
+	} 
+	
+	public static void getTime(double t) {
+		time = t;
+	}
+
+	public static void calcVelocity() {
+		initial = (velocity - (accel*time));
+		}
+	
+	public static double velocity;
+	public static double accel;
+	public static double time;
+	public static double initial;
+	
+	public static void main(String args[]) {
+		System.out.println("Enter Acceleration: \n");
+		time.getAccel(physScanner.nextDouble());
+		System.out.println("Enter Final Velocity: \n");
+		time.getVFinal(physScanner.nextDouble());
+		System.out.println("Enter Time: \n");
+		time.getTime(physScanner.nextDouble());
+		System.out.println("Initial Velocity: \n");
+		time.calcVelocity();
+		System.out.println(initial);
+	}
+}

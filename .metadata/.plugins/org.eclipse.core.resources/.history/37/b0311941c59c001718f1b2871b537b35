@@ -1,0 +1,10 @@
+import java.awt.Color;
+import java.awt.Graphics;;
+
+public class colorChange extends Pallet {
+
+	public static void main(String[] args) {
+		
+	}
+
+}

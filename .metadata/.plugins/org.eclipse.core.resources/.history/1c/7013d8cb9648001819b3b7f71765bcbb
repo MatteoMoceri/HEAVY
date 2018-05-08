@@ -1,0 +1,13 @@
+package classes;
+import network.combat;
+
+public class Mystic implements combat{
+	public double hp;
+	public double def;
+	public double atk;
+	public String name;
+
+	public Mystic(String n) {
+		name = n;
+	}
+}

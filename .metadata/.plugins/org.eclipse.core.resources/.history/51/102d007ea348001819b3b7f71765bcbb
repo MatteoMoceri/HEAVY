@@ -1,0 +1,10 @@
+package network;
+
+import java.util.*;
+import network.player;
+
+public class sim {
+	
+	public static void main(String[] args) {
+		player.iniitalizePlayers();
+}

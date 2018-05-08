@@ -1,0 +1,19 @@
+package function;
+
+public class Chunk {
+	
+	public double densityPercent;
+	public double length;
+	public double width;
+	public double height;
+	public double vol;
+	
+	public Chunk(double d, double l, double w, double h){
+		densityPercent = d;
+		length = l;
+		width = w;
+		height = h;
+		
+		vol = (l*w*h);
+	}
+}

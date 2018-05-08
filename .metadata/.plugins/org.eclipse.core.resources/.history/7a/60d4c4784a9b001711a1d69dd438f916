@@ -1,0 +1,70 @@
+import java.util.*;
+
+public class note_converter {
+	static String Note;
+	public note_converter() {
+	}
+
+	public static void convert() {
+		@SuppressWarnings("resource")
+		Scanner noteReader = new Scanner(System.in);
+		System.out.print("Input Note 1:");
+		String note1 = noteReader.next();
+		Note = note1;
+		
+		if(Note.equals("A")) {
+			System.out.println("D#");
+		}
+		
+		if(Note.equals("B")) {
+			System.out.println("F");
+		} 
+		
+		if(Note.equals("C")) {
+			System.out.println("F#");
+		} 
+		
+		if(Note.equals("D")) {
+			System.out.println("G#");
+		} 
+			
+		if(Note.equals("E")) {
+			System.out.println("A#");
+		} 
+			
+		if(Note.equals("F")) {
+			System.out.println("B");
+		} 
+			
+		if(Note.equals("G")) {
+			System.out.println("C#");
+		} 
+			
+		if(Note.equals("A#")) {
+			System.out.println("E");
+		} 
+			
+		if(Note.equals("C#")) {
+			System.out.println("G");
+		} 
+			
+		if(Note.equals("D#")) {
+			System.out.println("A");
+		} 
+			
+		if(Note.equals("F#")) {
+			System.out.println("C");
+		}
+			
+		if(Note.equals("G#")) {
+			System.out.println("D");
+		}
+		
+	}
+
+	public static void main(String[] args) {
+			note_converter.convert();
+		}
+	}
+
+

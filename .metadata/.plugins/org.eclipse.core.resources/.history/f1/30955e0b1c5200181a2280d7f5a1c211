@@ -1,0 +1,65 @@
+package classes;
+import java.util.Scanner;
+
+import function.Abilities;
+import function.Chunk;
+
+public class Phaser implements Abilities{
+	public double hp;
+	public double def;
+	public double atk;
+	public String name;
+	public String type = "Phaser";
+	public boolean phase = false;
+	public Scanner phaseScanner = new Scanner(System.in);
+	public int density = 100;
+
+	public Phaser(String n) {
+		name = n;
+	}
+
+	@Override
+	public void mainAbility() {
+		if(phase == false) {
+			System.out.println("Phasing Activated");
+			phase = true;
+		}else {
+			System.out.println("Phasing Deactivated");
+			phase = false;
+		}
+		
+	}
+
+	@Override
+	public void secondaryAbility() {
+		Chunk object;
+		String direction;
+		System.out.println("Select Object");
+		object = phaseScanner.next();
+		System.out.println("Shift Density Up or Down?");
+		direction = phaseScanner.next();
+		
+		switch(direction) {
+		case "up":
+			density = density + 50;
+			break;
+		case "down":
+			density = density - 50;
+			break;
+		}
+		
+		System.out.println("The " + object + "'s density has been shifted to " + density + "% of its original density.");
+	}
+
+	@Override
+	public void specialAbility() {
+		System.out.println("Change physical phase of objects");
+		
+	}
+
+	@Override
+	public void activate() {
+		System.out.println("Not Applicable");
+		
+	}
+}

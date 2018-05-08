@@ -1,0 +1,116 @@
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.BoxLayout;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+
+public class ElevensGUI implements ActionListener {
+	static JButton replace;
+	static JFrame board;
+	static JPanel displayPanel;
+
+	static JButton card1;
+	static JButton card2;
+	static JButton card3;
+	static JButton card4;
+	static JButton card5;
+	static JButton card6;
+	static JButton card7;
+	static JButton card8;
+	static JButton card9;
+	static JButton card10;
+	
+	static JPanel topPanel;
+	static JPanel bottomPanel;
+	
+	static JPanel card1Panel;
+	static JPanel card2Panel;
+	static JPanel card3Panel;
+	static JPanel card4Panel;
+	static JPanel card5Panel;
+	static JPanel card6Panel;
+	static JPanel card7Panel;
+	static JPanel card8Panel;
+	static JPanel card9Panel;
+	static JPanel card10Panel;
+	
+	
+	public void start() {
+		card1 = new JButton();
+		card2 = new JButton();
+		card3 = new JButton();
+		card4 = new JButton();
+		card5 = new JButton();
+		card6 = new JButton();
+		card7 = new JButton();
+		card8 = new JButton();
+		card9 = new JButton();
+		card10 = new JButton();
+		
+		displayPanel = new JPanel();
+		board = new JFrame();
+		replace = new JButton("Replace");
+	}
+	
+	public void addListener() {
+		replace.addActionListener(this);
+	}
+	
+	public void startGui(ElevensGUI g) {
+		g.start();
+		g.addListener();
+		
+		board.getContentPane().add(BorderLayout.EAST, displayPanel);
+		board.getContentPane().add(card1);
+		card1.setText("Card1");
+		
+		board.getContentPane().add(card2);
+		card1.setText("Card2");
+		
+		board.getContentPane().add(card3);
+		card1.setText("Card3");
+		
+		board.getContentPane().add(card4);
+		card1.setText("Card4");
+		
+		board.getContentPane().add(card5);
+		card1.setText("Card5");
+		
+		board.getContentPane().add(card6);
+		card1.setText("Card1");
+		
+		board.getContentPane().add(card7);
+		card1.setText("Card1");
+		
+		board.getContentPane().add(card8);
+		card1.setText("Card1");
+		
+		board.getContentPane().add(card9);
+		card1.setText("Card1");
+		
+		board.getContentPane().add(card10);
+		card1.setText("Card1");
+		
+		displayPanel.setLayout(new BoxLayout(displayPanel, BoxLayout.X_AXIS));
+		displayPanel.setBackground(Color.BLACK);
+		displayPanel.add(replace);
+		displayPanel.add(card1);
+		board.setSize(1000,500);
+		board.setVisible(true);
+		board.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		
+		
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		replace.setText("Good bye!");
+	}
+
+}
+

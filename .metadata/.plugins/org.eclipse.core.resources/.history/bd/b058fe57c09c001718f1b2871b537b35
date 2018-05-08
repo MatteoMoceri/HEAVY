@@ -1,0 +1,27 @@
+import java.awt.Color;
+import java.awt.Graphics;
+
+import javax.swing.JFrame;
+
+public class Pallet {
+	static JFrame frame;
+
+	public void start() {
+		frame = new JFrame();
+		frame.setVisible(true);
+		frame.setSize(400,400);
+	}
+	
+	public static void paintComponent(Graphics g) {
+		g.setColor(Color.orange);
+		
+		g.fillRect(30, 60, 200, 200);
+	}
+	
+	public static void main(String args[], Graphics g) {
+		Pallet artist = new Pallet();
+		artist.start();
+		Pallet.paintComponent(g);
+	}
+
+}

@@ -1,0 +1,77 @@
+import java.util.*;
+
+public class note_converter {
+	static String Note;
+	static String note1;
+	static String note2;
+	static String note3;
+	static String note4;
+	static String note5;
+	static String note6;
+	static String note7;
+	static String note8;
+
+	public static void convert() {
+		@SuppressWarnings("resource")
+		Scanner noteReader = new Scanner(System.in);
+		System.out.print("Input Note 1:");
+		String note = noteReader.next();
+		Note = note;
+		
+		if(Note.equals("A")) {
+			note1 = "D#";
+			System.out.println(note1);
+		}
+		
+		if(Note.equals("B")) {
+			System.out.println("F");
+		} 
+		
+		if(Note.equals("C")) {
+			System.out.println("F#");
+		} 
+		
+		if(Note.equals("D")) {
+			System.out.println("G#");
+		} 
+			
+		if(Note.equals("E")) {
+			System.out.println("A#");
+		} 
+			
+		if(Note.equals("F")) {
+			System.out.println("B");
+		} 
+			
+		if(Note.equals("G")) {
+			System.out.println("C#");
+		} 
+			
+		if(Note.equals("A#")) {
+			System.out.println("E");
+		} 
+			
+		if(Note.equals("C#")) {
+			System.out.println("G");
+		} 
+			
+		if(Note.equals("D#")) {
+			System.out.println("A");
+		} 
+			
+		if(Note.equals("F#")) {
+			System.out.println("C");
+		}
+			
+		if(Note.equals("G#")) {
+			System.out.println("D");
+		}
+		
+	}
+
+	public static void main(String[] args) {
+			note_converter.convert();
+		}
+	}
+
+

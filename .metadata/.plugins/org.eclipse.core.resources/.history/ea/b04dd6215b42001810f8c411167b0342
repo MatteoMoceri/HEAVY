@@ -1,0 +1,70 @@
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.BoxLayout;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+
+public class ElevensGUI implements ActionListener {
+	static JButton replace;
+	static JFrame board;
+	static JPanel displayPanel;
+
+	static JButton card1;
+	static JButton card2;
+	static JButton card3;
+	static JButton card4;
+	static JButton card5;
+	static JButton card6;
+	static JButton card7;
+	static JButton card8;
+	static JButton card9;
+	static JButton card10;
+	
+	public void start() {
+		displayPanel = new JPanel();
+		board = new JFrame();
+		replace = new JButton("Replace");
+	}
+	
+	public void addListener() {
+		replace.addActionListener(this);
+	}
+	
+	public void startGui(ElevensGUI g) {
+		g.start();
+		g.addListener();
+		
+		board.getContentPane().add(BorderLayout.EAST, displayPanel);
+		board.getContentPane().add(card1);
+		board.getContentPane().add(card2);
+		board.getContentPane().add(card3);
+		board.getContentPane().add(card4);
+		board.getContentPane().add(card5);
+		board.getContentPane().add(card6);
+		board.getContentPane().add(card7);
+		board.getContentPane().add(card8);
+		board.getContentPane().add(card9);
+		board.getContentPane().add(card10);
+		
+		displayPanel.setLayout(new BoxLayout(displayPanel, BoxLayout.X_AXIS));
+		displayPanel.setBackground(Color.BLACK);
+		displayPanel.add(replace);
+		board.setSize(1000,500);
+		board.setVisible(true);
+		board.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		
+		
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		replace.setText("Good bye!");
+	}
+
+}
+

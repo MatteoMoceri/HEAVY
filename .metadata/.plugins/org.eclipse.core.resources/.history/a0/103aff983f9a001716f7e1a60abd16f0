@@ -1,0 +1,19 @@
+
+public class client_test {
+	
+	public static String t = "123456789";
+	public static char c = t.charAt(0);
+	
+	public client_test() {
+
+	}
+
+	public static void augText(String m) {
+		System.out.println(m);
+	}
+
+	public static void main(String args[]) {
+		client_test.augText(t + " initialized;" + " Selected Character: " + c);
+	}
+
+}

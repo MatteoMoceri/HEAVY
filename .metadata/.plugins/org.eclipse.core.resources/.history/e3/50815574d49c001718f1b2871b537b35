@@ -1,0 +1,71 @@
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.BoxLayout;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+
+public class advancedGUI implements ActionListener {
+	
+	static JFrame inputArea;
+	static JButton inputButton1;
+	static JButton inputButton2;
+	static JButton inputButton3;
+	static JPanel panel1;
+	static JPanel panel2;
+	static JTextField inputField;
+
+	public void run() {
+		inputArea = new JFrame();
+		inputArea.setVisible(true);
+		inputArea.setSize(400, 400);
+		inputArea.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+		inputButton1 = new JButton();
+		inputButton2 = new JButton();
+		inputButton3 = new JButton();
+
+		inputButton1.setText("HEY");
+		inputButton2.setText("HOWDY");
+		inputButton3.setText("HELLO");
+		
+		inputField = new JTextField(10);
+		inputField = new JTextField("Input: ");
+
+		panel1 = new JPanel();
+		panel1.setBackground(Color.darkGray);
+		panel1.setLayout(new BoxLayout(panel1, BoxLayout.Y_AXIS));
+
+		panel1.add(inputButton1);
+		panel1.add(inputButton2);
+		panel1.add(inputButton3);
+	
+		panel2 = new JPanel();
+		panel2.setBackground(Color.black);
+		panel2.setLayout(new BoxLayout(panel2, BoxLayout.X_AXIS));
+		panel2.add(inputField);
+	}
+	
+	public void addListener() {
+		inputButton3.addActionListener(this);
+	}
+	
+	public static void main(String args[]) {
+		advancedGUI gui = new advancedGUI();
+		gui.run();
+		gui.addListener();
+	
+		inputArea.getContentPane().add(BorderLayout.EAST, panel1);
+		inputArea.getContentPane().add(BorderLayout.NORTH, panel2);
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+}

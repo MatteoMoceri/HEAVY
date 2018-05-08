@@ -1,0 +1,5 @@
+import network.combat;
+
+public class Phaser implements combat{
+
+}

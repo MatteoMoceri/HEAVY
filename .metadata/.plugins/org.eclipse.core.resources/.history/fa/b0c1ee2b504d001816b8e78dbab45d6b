@@ -1,0 +1,151 @@
+package network;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+import classes.Graviteer;
+import classes.Kronos;
+import classes.Mage;
+import classes.Mystic;
+import classes.Phaser;
+import classes.Photon;
+
+public class Combat extends Sim {
+	public Graviteer grav;
+	public Mage mage;
+	public Mystic myst;
+	public Kronos kron;
+	public Phaser phase;
+	public Photon photon;
+
+	List<Player> playersInCombat = new ArrayList<Player>();
+	public boolean playing = true;
+	public Scanner moveScanner = new Scanner(System.in);
+
+	public Combat() {
+		for (int k = 0; k < playerList.size(); k++) {
+			playersInCombat.add(playerList.get(k));
+		}
+	}
+
+	public void useAbilities(int p) {
+		System.out.println("Testing Player " + p + "'s Abilities");
+		System.out.println("Player " + p + " is playing as a " + playerClasses[p]);
+		Object ch = characterList.get(p);
+		switch (playersInCombat.get(p).characterClass) {
+
+		case "mage":
+			playerClasses[p] = ((Mage) characterList.get(p)).type;
+			mage = (Mage) ch;
+			break;
+		case "photon":
+			playerClasses[p] = ((Photon) characterList.get(p)).type;
+			photon = (Photon) ch;
+			break;
+		case "kronos":
+			playerClasses[p] = ((Kronos) characterList.get(p)).type;
+			kron = (Kronos) ch;
+			break;
+		case "phaser":
+			playerClasses[p] = ((Phaser) characterList.get(p)).type;
+			phase = (Phaser) ch;
+			break;
+		case "graviteer":
+			playerClasses[p] = ((Graviteer) characterList.get(p)).type;
+			grav = (Graviteer) ch;
+			break;
+		case "mystic":
+			playerClasses[p] = ((Mystic) characterList.get(p)).type;
+			myst = (Mystic) ch;
+			break;
+		}
+
+		// Combat loop
+		while (playing == true) {
+			String move;
+			System.out.println("Which move would you like to test?");
+			move = moveScanner.next();
+			switch (move) {
+			
+			//Main Ability
+			case "1":
+				switch (playersInCombat.get(p).characterClass) {
+				case "mage":
+					mage.mainAbility();
+					break;
+				case "photon":
+					photon.mainAbility();
+					break;
+				case "kronos":
+					kron.mainAbility();
+					break;
+				case "phaser":
+					phase.mainAbility();
+					break;
+				case "graviteer":
+					grav.mainAbility();
+					break;
+				case "mystic":
+					myst.mainAbility();
+					break;
+				}
+				break;
+				
+			//Secondary Ability
+			case "2":
+				switch (playersInCombat.get(p).characterClass) {
+				case "mage":
+					mage.secondaryAbility();
+					break;
+				case "photon":
+					photon.secondaryAbility();
+					break;
+				case "kronos":
+					kron.secondaryAbility();
+					break;
+				case "phaser":
+					phase.secondaryAbility();
+					break;
+				case "graviteer":
+					grav.secondaryAbility();
+					;
+					break;
+				case "mystic":
+					myst.secondaryAbility();
+					break;
+				}
+				break;
+				
+			//Special Ability
+			case "3":
+				switch (playersInCombat.get(p).characterClass) {
+				case "mage":
+					mage.specialAbility();
+					break;
+				case "photon":
+					photon.specialAbility();
+					break;
+				case "kronos":
+					kron.specialAbility();
+					break;
+				case "phaser":
+					phase.specialAbility();
+					break;
+				case "graviteer":
+					grav.specialAbility();
+					break;
+				case "mystic":
+					myst.specialAbility();
+					break;
+				}
+				break;
+				
+			case "exit":
+				playing = false;
+				System.out.println("Combat Loop Exited");
+			}
+		}
+
+	}
+}

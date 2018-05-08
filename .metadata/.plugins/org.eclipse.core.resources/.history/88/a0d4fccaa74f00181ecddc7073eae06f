@@ -1,0 +1,13 @@
+package network;
+
+import java.util.Scanner;
+
+public interface Abilities {
+	
+	public Scanner genScanner = new Scanner(System.in);
+
+	public void mainAbility();
+	public void secondaryAbility();
+	public void specialAbility();
+	public void activate();
+}

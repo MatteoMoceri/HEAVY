@@ -1,0 +1,100 @@
+package classes;
+
+import java.util.Scanner;
+
+import network.Abilities;
+
+public class Graviteer implements Abilities {
+	double hp;
+	public double def;
+	public double atk;
+	public String name;
+	public String type = "Graviteer";
+	public String grenadeID = "w";
+	public String grenadeType = "GravWell";
+	public int gravWellNum = 0;
+	public int gravWireNum = 0;
+	
+	Scanner gravScanner = new Scanner(System.in);
+
+	public Graviteer(String n) {
+		name = n;
+	}
+
+	@Override
+	public void mainAbility() {
+
+		switch (grenadeID) {
+		case "w":
+			System.out.println("GravWell Grenade Thrown\n");
+			gravWellNum++;
+			break;
+		case "r":
+			System.out.println("Press \"p\" to attach first end of GravWire\n");
+			String p = gravScanner.next();
+			switch(p) {
+			case "p":
+				System.out.println("Press \"p\" to attach second end of GravWire\n");
+				p = gravScanner.next();
+				switch(p) {
+				case "p":
+					System.out.println("GravWire Complete\n");
+					break;
+				}
+				break;
+			}
+			break;
+		case "c":
+			System.out.println("Press \"p\" to place first GravCharge\n");
+			String q = gravScanner.next();
+			switch(q) {
+			case "p":
+				System.out.println("Press \"p\" to place second GravCharge\n");
+				q = gravScanner.next();
+				switch(q) {
+				case "p":
+					System.out.println("GravCharges Set\n");
+					break;
+				}
+				break;
+			}
+			break;
+		default:
+			System.out.println("Error");
+			break;
+		}
+	}
+
+	@Override
+	public void secondaryAbility() {
+		System.out.println("Gravity Jump Complete\n");
+	}
+
+	@Override
+	public void specialAbility() {
+		System.out.println("Choose type of grenade to equip:");
+		System.out.println("For GravWell Grenades, press \"w\"\nFor GravWires, press \"r\"\nFor GravCharges, press \"c\"\n ");
+		String t = gravScanner.next();
+		switch (t) {
+		case "w":
+			grenadeID = "w";
+			grenadeType = "GravWell";
+			break;
+		case "r":
+			grenadeID = "r";
+			grenadeType = "GravWire";
+			break;
+		case "c":
+			grenadeID = "c";
+			grenadeType = "GravCharge";
+			break;
+		}
+		System.out.println(grenadeType + " Equipped\n");
+	}
+
+	@Override
+	public void activate() {
+		// TODO Auto-generated method stub
+		
+	}
+}

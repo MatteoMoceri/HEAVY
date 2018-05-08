@@ -1,0 +1,25 @@
+import java.awt.BorderLayout;
+
+import javax.swing.JFrame;
+import javax.swing.JTextField;
+
+public class advancedGUI {
+	static JFrame inputArea;
+	static JTextField inputBox;
+	
+	public void start() {
+		inputArea = new JFrame();
+		inputBox  = new JTextField();
+		
+		inputArea.setVisible(true);
+		inputArea.setSize(400, 400);
+		inputArea.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	}
+	
+	public static void main(String args[]) {
+		advancedGUI gui = new advancedGUI();
+		gui.start();
+		
+		inputArea.getContentPane().add(BorderLayout.CENTER, inputBox);
+	}
+}

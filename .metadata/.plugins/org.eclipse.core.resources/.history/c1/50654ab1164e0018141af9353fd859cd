@@ -1,0 +1,180 @@
+package network;
+
+import java.util.*;
+
+import classes.Graviteer;
+import classes.Kronos;
+import classes.Mage;
+import classes.Mystic;
+import classes.Phaser;
+import classes.Photon;
+import network.Player;
+
+public class Sim {
+	public static String playerName;
+	public String characterClass;
+	public int rank;
+	public static List<Player> playerList;
+	@SuppressWarnings("rawtypes")
+	public static List characterList;
+	public static int[] playerRanks;
+	public static String[] playerClasses;
+	public static Scanner playerScanner = new Scanner(System.in);
+	public static boolean sw;
+
+	
+	public static void main(String[] args) {
+		initializePlayers();
+		createPlayerPairings(playerList, characterList);
+		System.out.println("Which Player's Abilities would you like to test?");
+		int p = playerScanner.nextInt();
+		Combat combat = new Combat();
+		combat.useAbilities(p);
+
+		
+	}
+
+	
+/////////////////////////////////////////////////////////////////////////////////
+	@SuppressWarnings({ "unchecked", "rawtypes" })
+	public static void setClasses(List<Player> p) {
+		characterList = new ArrayList();
+		for (int g = 0; g < p.size(); g++) {
+			
+			switch (playerList.get(g).characterClass) {
+			case "mage":
+				Mage mage = new Mage(playerName);
+				characterList.add(mage);
+				break;
+			case "photon":
+				Photon photon = new Photon(playerName);
+				characterList.add(photon);
+				break;
+			case "kronos":
+				Kronos kronos = new Kronos(playerName);
+				characterList.add(kronos);
+				break;
+			case "phaser":
+				Phaser phaser = new Phaser(playerName);
+				characterList.add(phaser);
+				break;
+			case "graviteer":
+				Graviteer graviteer = new Graviteer(playerName);
+				characterList.add(graviteer);
+				break;
+			case "mystic":
+				Mystic mystic = new Mystic(playerName);
+				characterList.add(mystic);
+				break;
+			}
+		}
+	}
+
+	public static void initializePlayers() {
+		int numPlayers;
+		Scanner input = new Scanner(System.in);
+		playerList = new ArrayList<Player>();
+
+		System.out.println("Welcome to HEAVY Physics Combat Simulator");
+		System.out.println("How many players?");
+		numPlayers = input.nextInt();
+
+		if (numPlayers == 1) {
+			String name = "";
+			String character = "";
+
+			System.out.println("Singleplayer Mode Initiated");
+
+			System.out.println("Please enter your name:");
+			name = input.next();
+
+			System.out.println("Which class would you like to play as?");
+			character = input.next();
+
+			Player player = new Player(name, character, 1);
+			playerList.add(player);
+
+		} else {
+			for (int j = 1; j <= numPlayers; j++) {
+				String name = "";
+				String character = "";
+
+				System.out.println("Player " + (j) + ", please enter your name:");
+				name = input.next();
+
+				System.out.println("Which class would you like to play as?");
+				character = input.next();
+
+				Player player = new Player(name, character, (j));
+				playerList.add(player);
+			}
+
+			// for (int i = 0; i < playerList.size(); i++) {
+			// System.out.println("Player " + (i + 1) + "'s name is " +
+			// playerList.get(i).playerName
+			// + ", and they chose the " + playerList.get(i).characterClass + " class.");
+			// }
+		}
+		setClasses(playerList);
+//		createPlayerPairings(playerList, characterList);
+	}
+
+	@SuppressWarnings("rawtypes")
+	public static void createPlayerPairings(List<Player> p, List c) {
+		playerRanks = new int[p.size()];
+		playerClasses = new String[c.size()];
+
+		for (int m = 0; m < p.size(); m++) {
+
+			playerRanks[m] = p.get(m).rank;
+			switch(p.get(m).characterClass) {
+			case "mage":
+				playerClasses[m] = ((Mage)c.get(m)).type;
+				break;
+			case "photon":
+				playerClasses[m] = ((Photon)c.get(m)).type;
+				break;
+			case "kronos":
+				playerClasses[m] = ((Kronos)c.get(m)).type;
+				break;
+			case "phaser":
+				playerClasses[m] = ((Phaser)c.get(m)).type;
+				break;
+			case "graviteer":
+				playerClasses[m] = ((Graviteer)c.get(m)).type;
+				break;
+			case "mystic":
+				playerClasses[m] = ((Mystic)c.get(m)).type;
+				break;
+			}
+			}
+
+		for (int n = 0; n < playerClasses.length; n++) {
+			System.out.println("Player " + playerRanks[n] + " is playing as a " + playerClasses[n]);
+		}
+	}
+	
+	public void toClass(Object c, String p) {
+		switch(p) {
+		case "graviteer":
+			c = (Graviteer)c;
+			break;
+		case "mage":
+			c = (Mage)c;
+			break;
+		case "mystic":
+			c = (Mystic)c;
+			break;
+		case "photon":
+			c = (Photon)c;
+			break;
+		case "phaser":
+			c = (Phaser)c;
+			break;
+		case "kronos":
+			c = (Kronos)c;
+			break;
+		}
+	}
+	
+}

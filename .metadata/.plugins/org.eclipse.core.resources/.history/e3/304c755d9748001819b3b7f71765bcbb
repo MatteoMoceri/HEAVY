@@ -1,0 +1,10 @@
+package network;
+
+public class player {
+	public String playerName;
+	public String characterClass;
+	
+	public player() {
+		
+	}
+}

@@ -1,0 +1,85 @@
+package network;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+import classes.Graviteer;
+import classes.Kronos;
+import classes.Mage;
+import classes.Mystic;
+import classes.Phaser;
+import classes.Photon;
+
+public class player {
+	public String playerName;
+	public String characterClass;
+	public Object character;
+	public int rank;
+
+	public player(String pn1, String cc1, int r) {
+		playerName = pn1;
+		characterClass = cc1.toLowerCase();
+		rank = r;
+	}
+
+	public void setClass() {
+		switch (characterClass) {
+		case "mage":
+			Mage mage = new Mage(playerName);
+			character = mage;
+			break;
+		case "photon":
+			Photon photon = new Photon(playerName);
+			character = photon;
+			break;
+		case "kronos":
+			Kronos kronos = new Kronos(playerName);
+			character = kronos;
+			break;
+		case "phaser":
+			Phaser phaser = new Phaser(playerName);
+			character = phaser;
+			break;
+		case "graviteer":
+			Graviteer graviteer = new Graviteer(playerName);
+			character = graviteer;
+			break;
+		case "mystic":
+			Mystic mystic = new Mystic(playerName);
+			character = mystic;
+		}
+	}
+
+	public static void initializePlayers() {
+		int numPlayers;
+		Scanner input = new Scanner(System.in);
+		List<player> playerList = new ArrayList<player>();
+
+		System.out.println("Welcome to HEAVY Physics Combat Simulator");
+		System.out.println("How many players?");
+		numPlayers = input.nextInt();
+
+		for (int j = 1; j <= numPlayers; j++) {
+			String name = "";
+			String character = "";
+
+			System.out.println("Player " + (j) + ", please enter your name:");
+			name = input.next();
+
+			System.out.println("Which class would you like to play as?");
+			character = input.next();
+
+			player player = new player(name, character, (j));
+			playerList.add(player);
+			
+			player.setClass();
+		}
+
+		for (int i = 0; i < playerList.size(); i++) {
+			System.out.println("Player " + (i + 1) + "'s name is " + playerList.get(i).playerName
+					+ ", and they chose the " + playerList.get(i).characterClass + " class.");
+		}
+
+	}
+}

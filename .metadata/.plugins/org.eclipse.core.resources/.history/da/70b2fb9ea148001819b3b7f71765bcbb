@@ -1,0 +1,32 @@
+package network;
+
+import java.util.*;
+
+public class sim {
+
+	static int numPlayers;
+	static Scanner input = new Scanner(System.in);
+	static List<player> playerList = new ArrayList<player>();
+
+	public static void main(String[] args) {
+		System.out.println("Welcome to HEAVY Physics Combat Simulator");
+		System.out.println("How many players?");
+		numPlayers = input.nextInt();
+
+		for (int j = 1; j <= numPlayers; j++) {
+			String name = "";
+			String character = "";
+
+			System.out.println("Player " + (j) + ", please enter your name:");
+			name = input.nextLine();
+
+			System.out.println("Which class would you like to play as?");
+			character = input.nextLine();
+
+			player player = new player(name, character, (j));
+			playerList.add(player);
+
+		}
+
+	}
+}

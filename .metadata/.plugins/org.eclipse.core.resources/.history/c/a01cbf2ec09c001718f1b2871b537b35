@@ -1,0 +1,23 @@
+import java.awt.Graphics;
+
+import javax.swing.JFrame;
+
+public class Pallet {
+	static JFrame frame;
+
+	public void start() {
+		frame = new JFrame();
+		frame.setVisible(true);
+		frame.setSize(400,400);
+	}
+	
+	public void paintComponent(Graphics g) {
+		
+	}
+	
+	public static void main(String args[]) {
+		Pallet artist = new Pallet();
+		artist.start();
+	}
+
+}

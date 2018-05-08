@@ -1,0 +1,38 @@
+package classes;
+import function.Abilities;
+
+public class Mystic implements Abilities{
+	public double hp;
+	public double def;
+	public double atk;
+	public String name;
+	public String type = "Mystic";
+
+	public Mystic(String n) {
+		name = n;
+	}
+
+	@Override
+	public void mainAbility() {
+		System.out.println("Telekinesis Active");
+		
+	}
+
+	@Override
+	public void secondaryAbility() {
+		System.out.println("Force Pulse Complete");
+		
+	}
+
+	@Override
+	public void specialAbility() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void activate() {
+		// TODO Auto-generated method stub
+		
+	}
+}

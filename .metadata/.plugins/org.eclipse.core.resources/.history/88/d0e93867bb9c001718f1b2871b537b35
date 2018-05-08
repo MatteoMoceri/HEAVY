@@ -1,0 +1,19 @@
+import javax.swing.JButton;
+import javax.swing.JFrame;
+
+public class Pallet {
+	static JFrame frame;
+	static JButton paint;
+	
+	public static void start() {
+		frame = new JFrame();
+		paint = new JButton("Click to Paint");
+		
+		frame.setVisible(true);
+		frame.setSize(400,400);
+	}
+	
+	public static void main(String args[]) {
+		Pallet.start();
+	}
+}

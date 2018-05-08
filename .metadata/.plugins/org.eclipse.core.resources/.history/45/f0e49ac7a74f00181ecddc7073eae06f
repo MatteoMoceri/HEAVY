@@ -1,0 +1,9 @@
+package network;
+
+public interface Abilities {
+
+	public void mainAbility();
+	public void secondaryAbility();
+	public void specialAbility();
+	public void activate();
+}

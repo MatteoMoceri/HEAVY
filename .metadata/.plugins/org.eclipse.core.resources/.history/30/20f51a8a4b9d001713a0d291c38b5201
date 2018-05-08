@@ -1,0 +1,12 @@
+import javax.swing.JButton;
+import javax.swing.JFrame;
+
+public class note_input {
+	
+	JFrame giveNotes;
+	JButton print;
+	
+	public static void main(String args[]) {
+		
+	}
+}

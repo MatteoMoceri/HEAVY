@@ -1,0 +1,11 @@
+package network;
+
+public class player {
+	public String playerName;
+	public String characterClass;
+	
+	public player(String pn, String cc) {
+		playerName = pn;
+		characterClass = cc.toLowerCase();
+	}
+}

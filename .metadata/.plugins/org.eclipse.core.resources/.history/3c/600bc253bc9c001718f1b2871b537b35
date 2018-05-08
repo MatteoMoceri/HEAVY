@@ -1,0 +1,37 @@
+import java.awt.BorderLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+
+public class Pallet implements ActionListener {
+	static JFrame frame;
+	static JButton paint;
+	
+	public void start() {
+		frame = new JFrame();
+		paint = new JButton("Click to Paint");
+		
+		frame.getContentPane().add(BorderLayout.CENTER, paint);
+		frame.setVisible(true);
+		frame.setSize(400,400);
+	}
+	
+	public void addListener() {
+		paint.addActionListener(this);
+	}
+	
+	public void main(String args[]) {
+		Pallet artist = new Pallet();
+		
+		artist.start();
+		artist.addListener();
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		paint.setText("Painted");
+		
+	}
+}

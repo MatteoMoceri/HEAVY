@@ -1,0 +1,87 @@
+package classes;
+
+import java.util.Scanner;
+
+import network.Abilities;
+
+public class Graviteer implements Abilities {
+	double hp;
+	public double def;
+	public double atk;
+	public String name;
+	public String type = "Graviteer";
+	public String grenadeID = "w";
+	public String grenadeType = "GravWell";
+
+	Scanner gravScanner = new Scanner(System.in);
+
+	public Graviteer(String n) {
+		name = n;
+	}
+
+	@Override
+	public void mainAbility() {
+
+		switch (grenadeID) {
+		case "w":
+			System.out.println("GravWell Grenade Thrown");
+			break;
+		case "r":
+			System.out.println("Press \"p\" to attach first end of GravWire");
+			String p = gravScanner.next();
+			switch(p) {
+			case "p":
+				System.out.println("Press \"p\" to attach second end of GravWire");
+				p = gravScanner.next();
+				switch(p) {
+				case "p":
+					System.out.println("GravWire Complete");
+					break;
+				}
+				break;
+			}
+			break;
+		case "c":
+		case "p":
+			System.out.println("Press \"p\" to attach second end of GravWire");
+			p = gravScanner.next();
+			switch(p) {
+			case "p":
+				System.out.println("GravCharges Set");
+				break;
+			}
+			break;
+		}
+		break;
+		default:
+			System.out.println("Error");
+			break;
+		}
+	}
+
+	@Override
+	public void secondaryAbility() {
+		System.out.println("Gravity Jump Complete");
+	}
+
+	@Override
+	public void specialAbility() {
+		System.out.println("Which type of grenade would you like to equip?");
+		String t = gravScanner.next();
+		switch (t) {
+		case "w":
+			grenadeID = "w";
+			grenadeType = "GravWell";
+			break;
+		case "r":
+			grenadeID = "r";
+			grenadeType = "GravWire";
+			break;
+		case "c":
+			grenadeID = "c";
+			grenadeType = "GravCharge";
+			break;
+		}
+		System.out.println(grenadeType + " Equipped");
+	}
+}

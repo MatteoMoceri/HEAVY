@@ -1,0 +1,31 @@
+import java.awt.BorderLayout;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+
+public class advancedGUI {
+	static JFrame inputArea;
+	static JButton inputButton;
+//	static JPanel panelI;
+	
+	public void start() {
+		inputArea = new JFrame();
+		inputButton = new JButton();
+//		panelI = new JPanel();
+		
+		inputButton.setText("Hjshfkkjfwoelbjwo");
+		
+		inputArea.setVisible(true);
+		inputArea.setSize(400, 400);
+		inputArea.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	}
+	
+	public static void main(String args[]) {
+		advancedGUI gui = new advancedGUI();
+		gui.start();
+		
+		inputArea.getContentPane().add(BorderLayout.NORTH, inputButton);
+//		inputArea.getContentPane().add(panelI);
+//		panelI.add(BorderLayout.CENTER, inputButton);
+	}
+}

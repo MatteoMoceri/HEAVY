@@ -1,0 +1,14 @@
+package classes;
+
+import network.combat;
+
+public class Mage implements combat {
+	public double hp;
+	public double def;
+	public double atk;
+	public String name;
+
+	public Mage(String n) {
+		name = n;
+	}
+}

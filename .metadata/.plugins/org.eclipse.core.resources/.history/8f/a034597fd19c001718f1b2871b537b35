@@ -1,0 +1,49 @@
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.FlowLayout;
+import java.awt.Font;
+
+import javax.swing.BoxLayout;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+
+public class advancedGUI {
+	static JFrame inputArea;
+	static JButton inputButton1;
+	static JButton inputButton2;
+	static JButton inputButton3;
+	static JPanel panel1;
+	static JPanel panel2;
+	
+	public void start() {
+		inputArea = new JFrame();
+		inputButton1 = new JButton();
+		inputButton2 = new JButton();
+		inputButton3 = new JButton();
+		
+		inputArea.setVisible(true);
+		inputArea.setSize(400, 400);
+		inputArea.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		panel1 = new JPanel();
+		panel1.setBackground(Color.darkGray);
+		
+		panel1.setLayout(new BoxLayout(panel1, BoxLayout.Y_AXIS));
+		
+		inputButton1.setText("HEY");
+		inputButton2.setText("HOWDY");
+		inputButton3.setText("HELLO");
+		
+		panel1.add(inputButton1);
+		panel1.add(inputButton2);
+		panel1.add(inputButton3);
+	}
+	
+	public static void main(String args[]) {
+		advancedGUI gui = new advancedGUI();
+		gui.start();
+		
+		inputArea.getContentPane().add(BorderLayout.EAST, panel1);
+	}
+}

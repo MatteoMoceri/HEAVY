@@ -1,0 +1,7 @@
+package network;
+
+public interface combat {
+
+	public void mainAbility();
+	public void secondaryAbility();
+}

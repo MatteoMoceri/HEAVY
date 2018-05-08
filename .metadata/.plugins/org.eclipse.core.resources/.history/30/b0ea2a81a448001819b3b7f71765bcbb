@@ -1,0 +1,31 @@
+package classes;
+import network.combat;
+
+public class Graviteer implements combat{
+	double hp;
+	public double def;
+	public double atk;
+	public String name;
+
+	public Graviteer(String n) {
+		name = n;
+	}
+
+	@Override
+	public void mainAttack() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mainAbility() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void secondaryAbility() {
+		// TODO Auto-generated method stub
+		
+	}
+}

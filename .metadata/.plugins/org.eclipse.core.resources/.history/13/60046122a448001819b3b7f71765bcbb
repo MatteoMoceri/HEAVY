@@ -1,0 +1,19 @@
+package classes;
+
+import network.combat;
+
+public class Mage implements combat {
+	public double hp;
+	public double def;
+	public double atk;
+	public String name;
+
+	public Mage(String n) {
+		name = n;
+	}
+
+	@Override
+	public void mainAttack() {
+		System.out.println("Teleportation Beacon Placed");
+	}
+}

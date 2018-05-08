@@ -1,0 +1,54 @@
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.BoxLayout;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+
+public class note_input implements ActionListener {
+	
+	static JFrame giveNotes;
+	static JButton print;
+	static JPanel panel1;
+	
+	public void setupGUI() {
+		giveNotes = new JFrame();
+		print = new JButton();
+		
+		giveNotes.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		giveNotes.setVisible(true);
+		giveNotes.setSize(400,400);
+	}
+	
+	public void setupButton() {
+		print = new JButton("Print");
+	}
+	
+	public void addListener() {
+		print.addActionListener(this);
+	}
+	
+	public void addPanel() {
+		panel1 = new JPanel();
+		panel1.setLayout(new BoxLayout(panel1, BoxLayout.X_AXIS));
+		panel1.setBackground(Color.BLACK);
+		panel1.add(print);
+		giveNotes.getContentPane().add(BorderLayout.CENTER, panel1);
+	}
+	
+	public static void main(String args[]) {
+		note_input gui = new note_input();
+		gui.setupGUI();
+		gui.setupButton();
+		gui.addPanel();
+		gui.addListener();
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent arg0) {
+		print.setText("Printed");
+	}
+}

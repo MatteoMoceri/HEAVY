@@ -1,0 +1,34 @@
+package network;
+
+import classes.Mage;
+import classes.Photon;
+
+public class player {
+	public String playerName;
+	public String characterClass;
+	public Object character;
+	public int rank;
+	
+	public player(String pn1, String cc1, int r) {
+		playerName = pn1;
+		characterClass = cc1.toLowerCase();
+		rank = r;
+	}
+	
+	public void setClass() {
+		switch(characterClass) {
+		case "mage":
+			Mage mage = new Mage(playerName);
+			character = mage;
+			break;	
+		case "photon":
+			Photon photon  = new Photon(playerName);
+			character = photon;
+			break;
+		case "kronos":
+		case "phaser":
+		case "graviteer":
+		case "mystic":
+		}
+	}
+}
